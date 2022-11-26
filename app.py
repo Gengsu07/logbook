@@ -17,11 +17,17 @@ def selenium(nip,password):
     firefoxOptions = Options()
     firefoxOptions.add_argument("--headless")
     service = Service(GeckoDriverManager().install())
+    profile = webdriver.FirefoxProfile()
+    # We set the coordinate of where we want to be.
+    profile.set_preference("geo.wifi.uri", 'data:application/json,{"location": params, "accuracy": 100.0}')
+    # This line is necessary to avoid to prompt for geolocation authorization.
+    profile.set_preference("geo.prompt.testing", True)
     driver = webdriver.Firefox(
+        profile,
         options=firefoxOptions,
         service=service,
     )
-    driver.execute_cdp_cmd("Page.setGeolocationOverride", params)
+    
     driver.get('https://logbook.pajak.go.id/login')
     time.sleep(2)
     driver.find_element_by_xpath('//input[@id="nip"]').send_keys(nip)
