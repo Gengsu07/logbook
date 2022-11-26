@@ -28,7 +28,7 @@ def selenium(nip,password):
         service=service,
     )
     
-    data = driver.get('https://logbook.pajak.go.id/login')
+    driver.get('https://logbook.pajak.go.id/login')
 #     time.sleep(3)
 #     driver.find_element_by_id('nip').send_keys(nip)
 #     driver.find_element_by_id('password').send_keys(password)
@@ -44,9 +44,10 @@ def selenium(nip,password):
 #         row = baris.find_elements_by_tag_name('td')
 #         row_data = [x.text for x in row]
 #         data.loc[len(data)] = row_data
+    
+    return driver.title
     driver.close()
     driver.quit()
-    return data.title
 
 if __name__ == '__main__':
     st.title('Absen')
