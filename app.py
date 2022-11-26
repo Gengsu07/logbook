@@ -30,8 +30,8 @@ def selenium(nip,password):
     
     driver.get('https://logbook.pajak.go.id/login')
     time.sleep(3)
-    driver.find_element_by_xpath('//input[@id="nip"]').send_keys(nip)
-    driver.find_element_by_xpath('//input[@id="password"]').send_keys(password)
+    driver.find_element_by_xpath('//input[@placeholder="User SIKKA"]').send_keys(nip)
+    driver.find_element_by_xpath('//input[@placeholder="Kata Sandi"]').send_keys(password)
     driver.find_element_by_xpath('//button[@name="m_login_signin_submit"]').click()
     time.sleep(2)
     driver.find_element_by_xpath('//button[@id="btnPresensi"]').click()
