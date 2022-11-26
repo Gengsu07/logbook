@@ -28,25 +28,25 @@ def selenium(nip,password):
         service=service,
     )
     
-    driver.get('https://logbook.pajak.go.id/login')
-    time.sleep(3)
-    driver.find_element_by_id('nip').send_keys(nip)
-    driver.find_element_by_id('password').send_keys(password)
-    driver.find_element_by_id("m_login_signin_submit").click()
-    time.sleep(2)
-    driver.find_element_by_id('btnPresensi').click()
-    time.sleep(2)
-    driver.get('https://logbook.pajak.go.id/Presensi')
-    time.sleep(1)
-    data = pd.DataFrame(columns=['Hal',':','ket'])
-    tabel =driver.find_elements_by_tag_name('tr')
-    for baris in tabel[2:6]:
-        row = baris.find_elements_by_tag_name('td')
-        row_data = [x.text for x in row]
-        data.loc[len(data)] = row_data
+    data = driver.get('https://logbook.pajak.go.id/login')
+#     time.sleep(3)
+#     driver.find_element_by_id('nip').send_keys(nip)
+#     driver.find_element_by_id('password').send_keys(password)
+#     driver.find_element_by_id("m_login_signin_submit").click()
+#     time.sleep(2)
+#     driver.find_element_by_id('btnPresensi').click()
+#     time.sleep(2)
+#     driver.get('https://logbook.pajak.go.id/Presensi')
+#     time.sleep(1)
+#     data = pd.DataFrame(columns=['Hal',':','ket'])
+#     tabel =driver.find_elements_by_tag_name('tr')
+#     for baris in tabel[2:6]:
+#         row = baris.find_elements_by_tag_name('td')
+#         row_data = [x.text for x in row]
+#         data.loc[len(data)] = row_data
     driver.close()
     driver.quit()
-    return data
+    return data.title
 
 if __name__ == '__main__':
     st.title('Absen')
