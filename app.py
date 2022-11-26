@@ -57,7 +57,7 @@ if __name__ == '__main__':
     if st.button('Absen Klik disini ygy'):
         with st.spinner('Sedang Mencoba...'):
             hasil = selenium(nip,password)
-            st.table(hasil)
+            st.write(hasil)
             st.code("credit by gengsu07")
 
 
