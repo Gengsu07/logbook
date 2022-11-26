@@ -29,16 +29,16 @@ def selenium(nip,password):
     
     driver.get('https://logbook.pajak.go.id/login')
     time.sleep(3)
-    driver.find_element_by_id('nip').send_keys(nip)
-    driver.find_element_by_id('password').send_keys(password)
-    driver.find_element_by_id("m_login_signin_submit").click()
+    driver.find_element(By.ID,'nip').send_keys(nip)
+    driver.find_element(By.ID,'password').send_keys(password)
+    driver.find_element(By.ID,"m_login_signin_submit").click()
     time.sleep(2)
-    driver.find_element_by_id('btnPresensi').click()
+    driver.find_element(By.ID,'btnPresensi').click()
     time.sleep(2)
     driver.get('https://logbook.pajak.go.id/Presensi')
     time.sleep(1)
     data = pd.DataFrame(columns=['Hal',':','ket'])
-    tabel =driver.find_elements_by_tag_name('tr')
+    tabel =driver.find_elements(By.TAG_NAME,'tr')
     for baris in tabel[2:6]:
         row = baris.find_elements_by_tag_name('td')
         row_data = [x.text for x in row]
