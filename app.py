@@ -42,7 +42,7 @@ def selenium(nip,password):
     driver.quit()
     return data
 
-if __name__ = 'main':
+if __name__ = '__main__':
     st.title('Absen')
     st.caption('Data anda aman, tapi hal lain resiko ditanggung sendiri yak ')
     nip = st.text_input('NIP Pendek')
